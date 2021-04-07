@@ -10,6 +10,11 @@ namespace andrey_opozdal
         private Special selectedSpecial;
         private Group selectedGroup;
 
+        public CustomCommand OpenSpecials { get; set; }
+        public CustomCommand OpenGroups { get; set; }
+        public CustomCommand OpenStudents { get; set; }
+             
+
         public ObservableCollection<Special> Specials { get; set; }
         public ObservableCollection<Group> Groups { get; set; }
         public ObservableCollection<Student> Students { get; set; }
@@ -40,10 +45,10 @@ namespace andrey_opozdal
                 SignalChanged("Students");
             }
         }
-
+       
         public VM()
         {
-            entities = new Entities();
+            entities = DB.GetDB();
             Specials = new ObservableCollection<Special>(entities.Specials);
         }
 

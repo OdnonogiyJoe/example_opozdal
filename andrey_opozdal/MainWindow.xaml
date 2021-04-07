@@ -10,26 +10,34 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel>
+        <Menu>
+            <MenuItem Header="Справочники">
+                <MenuItem Header="Специальности" Command="{Binding OpenSpecials}"/>
+                <MenuItem Header="Группы" Command="{Binding OpenGroups}"/>
+                <MenuItem Header="Студенты" Command="{Binding OpenStudents}"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel Grid.Row="1">
             <TextBlock Text="Специальность"/>
             <ComboBox ItemsSource="{Binding Specials}"
                       SelectedItem="{Binding SelectedSpecial}"
                       DisplayMemberPath="Title"/>
         </StackPanel>
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="2">
             <TextBlock Text="Группа 1"/>
             <ComboBox ItemsSource="{Binding Groups}"
                       SelectedItem="{Binding SelectedGroup}"
                       DisplayMemberPath="Number"/>
         </StackPanel>
-        <ListView Grid.Row="2" ItemsSource="{Binding Students}">
+        <ListView Grid.Row="3" ItemsSource="{Binding Students}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
                     <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
-                    <GridViewColumn Header="Дата Рождения" DisplayMemberBinding="{Binding Birthday}"/>
+                    <GridViewColumn Header="Дата Рождения" DisplayMemberBinding="{Binding Birthday, StringFormat='{}{0:dd.MM.yyyy}'}"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -1,0 +1,34 @@
+﻿<Window x:Class="andrey_opozdal.WinSpecials"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:andrey_opozdal"
+        mc:Ignorable="d"
+        Title="WinSpecials" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Специальности"/>
+        <ListBox Grid.Row="1"
+                 ItemsSource="{Binding Specials}"
+                 SelectedItem="{Binding SelectedSpecial}"
+                 DisplayMemberPath="Title"/>
+        <Button Grid.Row="2" Content="Добавить новую специальность"
+                Command="{Binding AddSpecial}"/>
+        <TextBlock Grid.Column="1" Text="Редактирование специлаьности"/>
+        <StackPanel Grid.Row="1" Grid.Column="1"
+                    DataContext="{Binding SelectedSpecial}">
+            <TextBlock Text="Наименование"/>
+            <TextBox Text="{Binding Title}"/>
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="2" Content="Сохранить изменения" Command="{Binding SaveSpecials}"/>
+    </Grid>
+</Window>
