@@ -50,6 +50,9 @@ namespace andrey_opozdal
         {
             entities = DB.GetDB();
             Specials = new ObservableCollection<Special>(entities.Specials);
+            OpenSpecials = new CustomCommand(() => { new WinSpecials().Show(); });
+            OpenGroups = new CustomCommand(() => { new WinGroups().Show(); });
+            OpenStudents = new CustomCommand(() => { new WinStudents().Show(); });
         }
 
         void SignalChanged([CallerMemberName] string prop = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));

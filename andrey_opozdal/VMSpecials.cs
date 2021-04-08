@@ -29,6 +29,7 @@ namespace andrey_opozdal
                 try
                 {
                     entities.SaveChanges();
+                    LoadSpecials();
                 }
                 catch (Exception ex)
                 {

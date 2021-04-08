@@ -23,7 +23,7 @@
                  DisplayMemberPath="Title"/>
         <Button Grid.Row="2" Content="Добавить новую специальность"
                 Command="{Binding AddSpecial}"/>
-        <TextBlock Grid.Column="1" Text="Редактирование специлаьности"/>
+        <TextBlock Grid.Column="1" Text="Редактирование специальности"/>
         <StackPanel Grid.Row="1" Grid.Column="1"
                     DataContext="{Binding SelectedSpecial}">
             <TextBlock Text="Наименование"/>

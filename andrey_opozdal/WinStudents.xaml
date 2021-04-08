@@ -1,0 +1,53 @@
+﻿<Window x:Class="andrey_opozdal.WinStudents"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:andrey_opozdal"
+        mc:Ignorable="d"
+        Title="WinStudents" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            
+        <TextBlock Text="Студенты" Margin="3"/>
+            <ListView ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
+                        <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
+                        <GridViewColumn Header="Дата Рождения" DisplayMemberBinding="{Binding Birthday, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <!--<ListBox Grid.Row="1"
+                 ItemsSource="{Binding Students}"
+                 SelectedItem="{Binding SelectedStudent}"
+                 DisplayMemberPath="Title"/>-->
+        <Button Grid.Row="2" Content="Добавить студента"
+                Command="{Binding AddStudent}"/>
+        <TextBlock Grid.Column="1" Text="Редактирование студента" Margin="2"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedStudent}">
+            <TextBlock Text="Имя" Margin="2"/>
+            <TextBox Text="{Binding Name}"/>
+            <TextBlock Text="Фамилия"/>
+            <TextBox Text="{Binding LastName}"/>
+            <TextBlock Text="Дата Рождения"/>
+            <TextBox Text="{Binding Birthday}"/>
+            <TextBlock Text="Группа"/>
+            <ComboBox ItemsSource="{Binding Groups}"
+                      SelectedItem="{Binding SelectedStudent.Group}"
+                      DisplayMemberPath="Title"/>
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="2" Content="Сохранить изменения" Command="{Binding SaveStudent}"/>
+    </Grid>
+</Window>
