@@ -16,10 +16,9 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel>
-            
         <TextBlock Text="Студенты" Margin="3"/>
-            <ListView ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}" >
+        <StackPanel>
+            <ListView Grid.Row="3" ItemsSource="{Binding Students}"  SelectedItem="{Binding SelectedStudent}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
@@ -29,25 +28,18 @@
                 </ListView.View>
             </ListView>
         </StackPanel>
-        <!--<ListBox Grid.Row="1"
-                 ItemsSource="{Binding Students}"
-                 SelectedItem="{Binding SelectedStudent}"
-                 DisplayMemberPath="Title"/>-->
-        <Button Grid.Row="2" Content="Добавить студента"
-                Command="{Binding AddStudent}"/>
-        <TextBlock Grid.Column="1" Text="Редактирование студента" Margin="2"/>
-        <StackPanel Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedStudent}">
+        <Button Grid.Row="2" Content="Добавить студента" Command="{Binding AddStudent}" />
+        <TextBlock Grid.Column="1" Text="Редактирование студента"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" >
             <TextBlock Text="Имя" Margin="2"/>
-            <TextBox Text="{Binding Name}"/>
+            <TextBox Text="{Binding SelectedStudent.FirstName}"/>
             <TextBlock Text="Фамилия"/>
-            <TextBox Text="{Binding LastName}"/>
+            <TextBox Text="{Binding SelectedStudent.LastName}"/>
             <TextBlock Text="Дата Рождения"/>
-            <TextBox Text="{Binding Birthday}"/>
+            <TextBox Text="{Binding SelectedStudent.Birthday,StringFormat='{}{0:dd.MM.yyyy}'}"/>
             <TextBlock Text="Группа"/>
-            <ComboBox ItemsSource="{Binding Groups}"
-                      SelectedItem="{Binding SelectedStudent.Group}"
-                      DisplayMemberPath="Title"/>
+            <ComboBox ItemsSource="{Binding Groups}" SelectedItem="{Binding SelectedStudent.Group}" DisplayMemberPath="Number"/>
         </StackPanel>
-        <Button Grid.Column="1" Grid.Row="2" Content="Сохранить изменения" Command="{Binding SaveStudent}"/>
+        <Button Grid.Column="1" Grid.Row="2" Content="Сохранить изменения" Command="{Binding SaveStudent}"  />
     </Grid>
 </Window>

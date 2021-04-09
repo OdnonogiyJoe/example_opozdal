@@ -13,7 +13,7 @@ namespace andrey_opozdal
         public CustomCommand OpenSpecials { get; set; }
         public CustomCommand OpenGroups { get; set; }
         public CustomCommand OpenStudents { get; set; }
-             
+
 
         public ObservableCollection<Special> Specials { get; set; }
         public ObservableCollection<Group> Groups { get; set; }
@@ -33,9 +33,10 @@ namespace andrey_opozdal
             }
         }
 
-        public Group SelectedGroup 
-        { get => selectedGroup;
-            set 
+        public Group SelectedGroup
+        {
+            get => selectedGroup;
+            set
             {
                 selectedGroup = value;
                 if (selectedGroup != null)
@@ -45,7 +46,7 @@ namespace andrey_opozdal
                 SignalChanged("Students");
             }
         }
-       
+
         public VM()
         {
             entities = DB.GetDB();

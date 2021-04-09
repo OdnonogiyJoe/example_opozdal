@@ -69,11 +69,15 @@
     <Compile Include="Group.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="IPage.cs" />
+    <Compile Include="IPageVM.cs" />
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages.cs" />
+    <Compile Include="PageType.cs" />
     <Compile Include="Special.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
